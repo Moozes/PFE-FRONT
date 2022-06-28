@@ -1,6 +1,4 @@
-import { Container } from "@mui/material"
 import DashboardNavbar from "../../components/DashboardNavbar"
-import ProfileCard from "../../components/ProfileCard"
 import AllUsers from "./AllUsers"
 import Doctors from "./Doctors"
 

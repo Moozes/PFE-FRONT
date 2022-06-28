@@ -59,13 +59,13 @@ export default function MyNavbar(props) {
                     }}
                   >
                     <MenuItem onClick={handleCloseDoctors}>
-                      <Notification/>
+                      <Notification verifiedDoctor />
                     </MenuItem>
                     <MenuItem onClick={handleCloseDoctors}>
                       <Notification/>
                     </MenuItem>
                     <MenuItem onClick={handleCloseDoctors}>
-                      <Notification/>
+                      <Notification verifiedDoctor />
                     </MenuItem>
                   </Menu>
 
@@ -84,7 +84,7 @@ export default function MyNavbar(props) {
                       <Notification/>
                     </MenuItem>
                     <MenuItem onClick={handleCloseMessages}>
-                      <Notification/>
+                      <Notification verifiedDoctor />
                     </MenuItem>
                   </Menu>
               </>

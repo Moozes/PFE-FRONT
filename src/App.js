@@ -22,31 +22,14 @@ function App() {
   return (
     <>
       <MyNavbar/>
-      {/* <Dashboard/> */}
-      <Profile/>
-      {/* <Messaging/> */}
-      {/* <Forum/> */}
+      {/* <Signup/> */}
+      {/* <Login/> */}
       {/* <ResetPassword/> */}
       {/* <SendEmail/> */}
-      {/* <Login/> */}
-      {/* <Signup/> */}
-      {/* <DashboardNavbar/>
-      <ProfileNavbar/>
-      <ProfileCard/>
-      <Notification/>
-      <Box sx={{display: "flex"}} >
-        <div style={{flexGrow: 1}}></div>
-        <LesionCard />
-        <div style={{flexGrow: 1}}></div>
-      </Box>
-      <UploadAvatar/>
-      <LogoutAll/>
-      <DeleteAccount/>
-      <SingleMessage  />
-      <MessageForm/>
-      <Box sx={{height: 1000}} >
-        hello
-      </Box> */}
+      {/* <Profile/> */}
+      <Messaging/>
+      {/* <Dashboard/> */}
+      {/* <Forum/> */}
     </>
     )
 

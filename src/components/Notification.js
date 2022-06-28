@@ -5,17 +5,8 @@ import {Box} from '@mui/material';
 import theme from '../theme';
 
 
-const bull = (
-    <Box
-      component="span"
-      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-      •
-    </Box>
-  );
-
 export default function Notification(props) {
-    let verifiedDoctor=true
+    let verifiedDoctor= props.verifiedDoctor
     return (
         <Paper sx={{display: "flex", alignItems: "center", p:1, cursor: "pointer"}} elevation={3}>
             <Avatar src="/profile.jpg" sx={{mr:1, width: 24, height: 24}}   />
@@ -28,3 +19,13 @@ export default function Notification(props) {
         </Paper>
     )
 }
+
+
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);

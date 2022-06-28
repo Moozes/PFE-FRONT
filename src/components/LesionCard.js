@@ -21,8 +21,8 @@ import Comment from './Comment';
 
 
 export default function LesionCard(props) {
-    let profile = false
-    let published = false
+    let profile = props.profile
+    let published = props.published
 
     // expand comments state
     const [expanded, setExpanded] = React.useState(false);

@@ -1,0 +1,21 @@
+props 
+    lesion card---
+    notification---
+    profile card---
+    single message---
+    my nav bar
+
+
+LesionCard 
+    profile: boolean
+    published: boolean
+
+Notification
+    verifiedDoctor: boolean
+
+ProfileCard
+    doctor: boolean
+    verifiedDoctor: boolean
+
+SingleMessage
+    myMessage: boolean

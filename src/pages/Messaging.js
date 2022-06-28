@@ -21,25 +21,11 @@ export default function Messaging(props) {
                 gap: 1,
                 
             }}>
+                <SingleMessage myMessage/>
                 <SingleMessage/>
+                <SingleMessage myMessage/>
                 <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
-                <SingleMessage/>
+                <SingleMessage myMessage/>
                 <SingleMessage/>
             </Paper>
 

@@ -8,20 +8,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import theme from '../theme'
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
 
 export default function ProfileCard(props) {
-    let doctor = false
-    let user = true
-    let verifiedDoctor = false
-    console.log(props.theme)
+    let doctor = props.doctor
+    let verifiedDoctor = props.verifiedDoctor
   return (
     <Card sx={{ minWidth: "60%", m:1, display: "flex"}}>
       <CardMedia
@@ -55,7 +45,7 @@ export default function ProfileCard(props) {
                 {verifiedDoctor ? 'Unverify': 'Verify'}
             </Button>
         )}
-        {user && (
+        {!doctor && (
             <Button size="medium" color="error" variant="contained" >
                 delete
             </Button>
@@ -66,7 +56,11 @@ export default function ProfileCard(props) {
 }
 
 
-// name
-// email
-// createdAt
-// avatarUrl
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);

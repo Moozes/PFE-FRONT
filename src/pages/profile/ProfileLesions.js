@@ -5,10 +5,10 @@ export default function ProfileLesions(props) {
     return (
         <Container maxWidth="sm" sx={{pt: 2}} >
             <UploadLesion/>
-            <LesionCard/>
-            <LesionCard/>
-            <LesionCard/>
-            <LesionCard/>
+            <LesionCard profile/>
+            <LesionCard profile/>
+            <LesionCard profile/>
+            <LesionCard published profile/>
         </Container>
     )
 }

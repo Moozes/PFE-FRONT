@@ -5,9 +5,9 @@ export default function Profile(props) {
     return (
         <>
             <ProfileNavbar/>
-            <ProfileSettings/>
+            {/* <ProfileSettings/> */}
 
-            {/* <ProfileLesions/> */}
+            <ProfileLesions/>
 
 
             {/* the router Outlet */}
