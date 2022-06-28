@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 
 export default function DeleteAccount(props) {
     return (
-        <Paper elevation={3} sx={{m: 1, p: 1}}>
+        <Paper elevation={3} sx={{m: 1, p: 3}} variant="outlined" >
         <div
           style={{
             display: "flex",

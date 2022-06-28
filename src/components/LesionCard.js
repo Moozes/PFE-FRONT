@@ -21,7 +21,7 @@ import Comment from './Comment';
 
 
 export default function LesionCard(props) {
-    let profile = true
+    let profile = false
     let published = false
 
     // expand comments state
@@ -31,7 +31,7 @@ export default function LesionCard(props) {
     };
 
   return (
-    <Card sx={{  m:2, flexBasis: "50%" }}>
+    <Card sx={{  mt:2,mb:2, flexBasis: "50%" }}>
       <CardHeader
         avatar={
             <Avatar src="/profile.jpg" sx={{mr:1}}   />

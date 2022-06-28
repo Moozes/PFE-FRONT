@@ -31,7 +31,7 @@ export default function MyNavbar(props) {
   };
 
   let auth = true
-  let role = "user"
+  let role = "admin"
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

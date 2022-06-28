@@ -1,12 +1,11 @@
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
-import theme from '../theme';
 
 
-export default function LogoutAll(props) {
+export default function DeleteAvatar(props) {
     return (
-        <Paper elevation={3} sx={{m: 1, p: 3}} variant="outlined">
+        <Paper elevation={3} sx={{m: 1, p: 3, flexGrow:1}} variant="outlined">
         <div
           style={{
             display: "flex",
@@ -15,13 +14,13 @@ export default function LogoutAll(props) {
             margin: "2px 0"
           }}
         >
-          <Typography align="center" variant='body1' sx={{color: theme.palette.info.main}} gutterBottom>
-            Logout of all connected devices
+          <Typography align="center" variant='body1' color="red" gutterBottom>
+            Delete Profile Image
           </Typography>
           <Button 
             align="center"
             variant="contained"
-            color="info"
+            color="error"
             onClick={() => {
             //   deleteMyAccount()
             //   .then(() => {
@@ -32,7 +31,7 @@ export default function LogoutAll(props) {
             //     console.log(err)
             //   })
             }}
-          >Logout All</Button>
+          >Delete My Image</Button>
         </div>
       </Paper>
     )

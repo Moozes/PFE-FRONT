@@ -6,6 +6,7 @@ import theme from '../theme';
 
 export default function SingleMessage(props) {
     let myMessage = true
+    
     const receiverMessageStyle = {
         backgroundColor: theme.palette.grey[700],
         color: theme.palette.text.primary

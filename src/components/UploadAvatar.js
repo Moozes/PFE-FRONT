@@ -8,7 +8,7 @@ import {TextField, Button} from '@mui/material';
 
 export default function UploadAvatar(props) {
     return (
-        <Paper elevation={3} sx={{m: 1, p: 1}}>
+        <Paper elevation={3} sx={{m: 1, p: 1 ,flexGrow:1}}>
         <Typography 
           variant="h6"
           align="center"

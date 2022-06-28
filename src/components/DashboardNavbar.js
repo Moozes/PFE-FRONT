@@ -10,14 +10,14 @@ import { useState } from 'react';
 import Notification from './Notification';
 
 
-export default function ProdileNavbar(props) {
+export default function DashboardNavbar(props) {
 
 
   return (
     <AppBar position="static"  >
     <Toolbar sx={{display: "flex", gap:2}} >
-        <Button color="primary" variant="contained" sx={{flexGrow: 1}} >lesions</Button>
-        <Button color="primary" variant="contained" sx={{flexGrow: 1}} >settings</Button>
+        <Button color="primary" variant="contained" sx={{flexGrow: 1}} >Doctors</Button>
+        <Button color="primary" variant="contained" sx={{flexGrow: 1}} >all users</Button>
     </Toolbar>
     </AppBar>
   )
