@@ -8,7 +8,7 @@ import theme from '../theme';
 export default function Notification(props) {
     let verifiedDoctor= props.verifiedDoctor
     return (
-        <Paper sx={{display: "flex", alignItems: "center", p:1, cursor: "pointer"}} elevation={3}>
+        <Paper sx={{display: "flex", alignItems: "center", p:1, cursor: "pointer"}} elevation={3} onClick={props.onClick}>
             <Avatar src="/profile.jpg" sx={{mr:1, width: 24, height: 24}}   />
             <Typography variant="h6" component="div">
                 Dr Omar{bull}

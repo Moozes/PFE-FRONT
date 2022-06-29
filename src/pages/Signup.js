@@ -3,14 +3,16 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import {Link as MuiLink} from '@mui/material';
 import { Select, MenuItem, FormControl, InputLabel} from '@mui/material';
-
+import {
+  Link
+} from 'react-router-dom'
 
 export default function SignUp() {
   const [showErr, setShowErr] = React.useState(false)
@@ -130,9 +132,9 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="login" variant="body2">
+                <MuiLink  component={Link} to="../login" variant="body2">
                   Already have an account? Sign in
-                </Link>
+                </MuiLink>
               </Grid>
             </Grid>
           </Box>

@@ -8,31 +8,35 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import {
+  useNavigate
+} from 'react-router-dom'
 
 
 export default function SendEmail() {
   const [showErr, setShowErr] = React.useState(false)
+  let navigate = useNavigate()
 
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   // console.log({
-  //   //   email: data.get('role'),
-  //   //   password: data.get('password'),
-  //   // });
-  //   const email = data.get('email')
-  //   sendResetCode(email)
-  //   .then(res => {
-  //     console.log(res)
-  //     setShowErr(false)
-  //     navigate('/reset-password')
-  //   })
-  //   .catch(err => {
-  //     setShowErr(true)
-  //     console.log(err.response.data.error)
-  //   })
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // const data = new FormData(event.currentTarget);
+    // // console.log({
+    // //   email: data.get('role'),
+    // //   password: data.get('password'),
+    // // });
+    // const email = data.get('email')
+    // sendResetCode(email)
+    // .then(res => {
+    //   console.log(res)
+    //   setShowErr(false)
+    //   navigate('/reset-password')
+    // })
+    // .catch(err => {
+    //   setShowErr(true)
+    //   console.log(err.response.data.error)
+    // })
+    navigate('/reset-password')
+  };
 
 
 
@@ -63,7 +67,7 @@ export default function SendEmail() {
 
           {/* form */}
           <Box component="form" 
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
              sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>

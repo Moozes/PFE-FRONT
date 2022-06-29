@@ -10,7 +10,7 @@ export default function ProfileSettings(props) {
     return (
         <Container maxWidth="md" sx={{display: "flex", flexDirection: "column", gap:3}} >
             <UpdateProfile/>
-            <ProfileCard/>
+            <ProfileCard doctor={false} />
             <Box
                 sx={{
                     display: "flex",

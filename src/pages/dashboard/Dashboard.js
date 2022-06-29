@@ -1,12 +1,14 @@
 import DashboardNavbar from "../../components/DashboardNavbar"
-import AllUsers from "./AllUsers"
-import Doctors from "./Doctors"
+import {
+    Outlet
+} from 'react-router-dom'
 
 export default function Dashboard(props) {
     return (
         <>
         <DashboardNavbar/>
-        <Doctors/>
+        <Outlet/>
+        {/* <Doctors/> */}
 
         {/* <AllUsers/> */}
 

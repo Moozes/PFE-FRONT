@@ -1,17 +1,13 @@
 import ProfileNavbar from '../../components/ProfileNavbar'
-import ProfileLesions from './ProfileLesions'
-import ProfileSettings from './ProfileSettings'
+import {
+    Outlet
+} from 'react-router-dom'
+
 export default function Profile(props) {
     return (
         <>
             <ProfileNavbar/>
-            {/* <ProfileSettings/> */}
-
-            <ProfileLesions/>
-
-
-            {/* the router Outlet */}
-            {/* <Outlet/> */}
+            <Outlet/>
         </>
     )
 }

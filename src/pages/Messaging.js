@@ -2,13 +2,16 @@
 import { Paper, Box, Container, Typography } from "@mui/material"
 import SingleMessage from "../components/SingleMessage"
 import MessageForm from "../components/MessageForm"
+import {
+    useParams
+} from 'react-router-dom'
 
 export default function Messaging(props) {
-
+    let params = useParams()
     return(
         <Container maxWidth="sm" sx={{pt: 3, display: "flex", flexDirection: "column", alignItems: "center"}}>
             <Typography variant="h6" align="center" gutterBottom>
-                Messaging With Name??
+                Messages with Name?? with id {params.id}
             </Typography>
             <Paper elevation={3} sx={{
                 width: 400, 

@@ -2,13 +2,15 @@ import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
+import {Link as MuiLink} from '@mui/material';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
+import {
+  Link
+} from 'react-router-dom'
 
 
 
@@ -99,14 +101,14 @@ export default function Login() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <MuiLink component={Link} to="../send-email" variant="body2">
                   Forgot password?
-                </Link>
+                </MuiLink>
               </Grid>
               <Grid item>
-                <Link href="signup" variant="body2">
+                <MuiLink component={Link} to="../signup"  variant="body2">
                   {"Don't have an account? Sign Up"}
-                </Link>
+                </MuiLink>
               </Grid>
             </Grid>
           </Box>

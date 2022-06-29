@@ -1,15 +1,4 @@
 import MyNavbar from './components/MyNavbar'
-import ProfileCard from './components/ProfileCard';
-import Notification from './components/Notification';
-import LesionCard from './components/LesionCard';
-import Box from '@mui/material/Box';
-import UploadAvatar from './components/UploadAvatar';
-import DeleteAccount from './components/DeleteAccount';
-import LogoutAll from './components/LogoutAll';
-import SingleMessage from './components/SingleMessage';
-import MessageForm from './components/MessageForm';
-import ProfileNavbar from './components/ProfileNavbar'
-import DashboardNavbar from './components/DashboardNavbar';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import SendEmail from './pages/reset-password/SendEmail';
@@ -18,18 +7,38 @@ import Forum from './pages/Forum';
 import Messaging from './pages/Messaging';
 import Profile from './pages/profile/Profile';
 import Dashboard from './pages/dashboard/Dashboard';
+import Home from './pages/Home';
+
+import {
+  Routes,
+  Route
+} from 'react-router-dom'
+import ProfileLesions from './pages/profile/ProfileLesions';
+import ProfileSettings from './pages/profile/ProfileSettings';
+import AllUsers from './pages/dashboard/AllUsers';
+import Doctors from './pages/dashboard/Doctors';
+
 function App() {
   return (
     <>
       <MyNavbar/>
-      {/* <Signup/> */}
-      {/* <Login/> */}
-      {/* <ResetPassword/> */}
-      {/* <SendEmail/> */}
-      {/* <Profile/> */}
-      <Messaging/>
-      {/* <Dashboard/> */}
-      {/* <Forum/> */}
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="signup" element={<Signup/>}/>
+        <Route path="login" element={<Login/>}/>
+        <Route path="send-email" element={<SendEmail/>}/>
+        <Route path="reset-password" element={<ResetPassword/>}/>
+        <Route path="profile" element={<Profile/>}>
+          <Route index element={<ProfileLesions/>}/>
+          <Route path="settings" element={<ProfileSettings/>}/>
+        </Route>
+        <Route path="dashboard" element={<Dashboard/>}>
+          <Route index element={<Doctors/>}/>
+          <Route path="users" element={<AllUsers/>}/>
+        </Route>
+        <Route path="forum" element={<Forum/>}/>
+        <Route path="messages/:id" element={<Messaging/>}/>
+      </Routes>
     </>
     )
 

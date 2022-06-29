@@ -8,6 +8,10 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
 import Notification from './Notification';
+import {
+  Link,
+  useNavigate
+} from 'react-router-dom'
 
 
 export default function MyNavbar(props) {
@@ -32,20 +36,21 @@ export default function MyNavbar(props) {
 
   let auth = true
   let role = "admin"
+  let navigate = useNavigate()
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar sx={{display: "flex"}} >
           <Box sx={{flexGrow: 1}} >
-              <Button color="inherit">Home</Button>
+              <Button color="inherit" component={Link} to="/">Home</Button>
               {auth && (
               <>
                   {role==="admin" && (
-                      <Button color="inherit">DashBoard</Button>
+                      <Button color="inherit" component={Link} to="dashboard">DashBoard</Button>
                   )}
-                  <Button color="inherit">Profile</Button>
+                  <Button color="inherit" component={Link} to="profile">Profile</Button>
                   {(role==="admin" || role==="doctor") && (
-                      <Button color="inherit">Forum</Button>
+                      <Button color="inherit" component={Link} to="forum">Forum</Button>
                   )}
 
                   <Button color="inherit" onClick={handleClickDoctors}>Doctors</Button>
@@ -59,13 +64,12 @@ export default function MyNavbar(props) {
                     }}
                   >
                     <MenuItem onClick={handleCloseDoctors}>
-                      <Notification verifiedDoctor />
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseDoctors}>
-                      <Notification/>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseDoctors}>
-                      <Notification verifiedDoctor />
+                      <Notification 
+                        verifiedDoctor 
+                        onClick={() => {
+                          navigate('messages/123')
+                        }}
+                      />
                     </MenuItem>
                   </Menu>
 
@@ -81,10 +85,12 @@ export default function MyNavbar(props) {
                     }}
                   >
                     <MenuItem onClick={handleCloseMessages}>
-                      <Notification/>
-                    </MenuItem>
-                    <MenuItem onClick={handleCloseMessages}>
-                      <Notification verifiedDoctor />
+                      <Notification 
+                          verifiedDoctor 
+                          onClick={() => {
+                            navigate('messages/123')
+                          }}
+                      />
                     </MenuItem>
                   </Menu>
               </>
@@ -95,8 +101,8 @@ export default function MyNavbar(props) {
           )}
           {!auth && (
           <>
-              <Button color="primary" variant="contained" sx={{ mr:1 }} >Login</Button>
-              <Button color="primary" variant="contained">Signup</Button>
+              <Button color="primary" variant="contained" sx={{ mr:1 }} component={Link} to="login">Login</Button>
+              <Button color="primary" variant="contained" component={Link} to="signup">Signup</Button>
           </>
           )}
         </Toolbar>
