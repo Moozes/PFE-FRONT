@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import {
   useNavigate
 } from 'react-router-dom'
+import { resetPassword } from '../../utils/apiAccountManegment'
+import saveToken from '../../utils/saveToken'
 
 export default function ResetPassword() {
   const [showErr, setShowErr] = React.useState(false)
@@ -18,25 +20,20 @@ export default function ResetPassword() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // const data = new FormData(event.currentTarget);
-    // // console.log({
-    // //   email: data.get('role'),
-    // //   password: data.get('password'),
-    // // });
-    // const email = data.get('email')
-    // const code = data.get('code')
-    // const password = data.get('password')
-    // resetPassword(email, code, password)
-    // .then(res => {
-    //   console.log(res)
-    //   setShowErr(false)
-    //   navigate('/login')
-    // })
-    // .catch(err => {
-    //   setShowErr(true)
-    //   console.log(err.response.data.error)
-    // })
-    navigate('/login')
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email')
+    const code = data.get('code')
+    const password = data.get('password')
+    resetPassword(email, code, password)
+    .then(res => {
+      console.log(res)
+      setShowErr(false)
+      navigate('/login')
+    })
+    .catch(err => {
+      setShowErr(true)
+      console.log(err.response.data.error)
+    })
   };
 
 

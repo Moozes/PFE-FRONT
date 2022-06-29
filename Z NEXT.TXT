@@ -1,11 +1,3 @@
-props 
-    lesion card---
-    notification---
-    profile card---
-    single message---
-    my nav bar
-
-
 LesionCard 
     profile: boolean
     published: boolean
@@ -19,3 +11,36 @@ ProfileCard
 
 SingleMessage
     myMessage: boolean
+
+
+link with backend
+    Signup---
+    Login---
+    forget password---
+    logout---
+    logoutAll---
+    verify email---
+    delete my user---
+    upload profile image---
+    delete profile image---
+    Update profile---
+    get all doctors
+    get my profile information
+
+    admin
+        varify a doctor
+
+    admin & doctor
+        get published lesions
+
+    admin & doctor & owner
+        comment on a lesion
+
+    user
+        upload a lesion
+        get my uploaded lesions
+        delete one of my lesions
+        Publish/Unpublish one of my lesions
+
+        send message to doctor X
+        get all my messages from doctor X

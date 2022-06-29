@@ -17,6 +17,7 @@ import ProfileLesions from './pages/profile/ProfileLesions';
 import ProfileSettings from './pages/profile/ProfileSettings';
 import AllUsers from './pages/dashboard/AllUsers';
 import Doctors from './pages/dashboard/Doctors';
+import VerifyEmail from './pages/VerifyEmail';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="login" element={<Login/>}/>
         <Route path="send-email" element={<SendEmail/>}/>
         <Route path="reset-password" element={<ResetPassword/>}/>
+        <Route path="verify-email" element={<VerifyEmail/>}/>
         <Route path="profile" element={<Profile/>}>
           <Route index element={<ProfileLesions/>}/>
           <Route path="settings" element={<ProfileSettings/>}/>

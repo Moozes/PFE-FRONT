@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,35 +11,37 @@ import Container from '@mui/material/Container';
 import {Link as MuiLink} from '@mui/material';
 import { Select, MenuItem, FormControl, InputLabel} from '@mui/material';
 import {
-  Link
+  Link,
+  useNavigate
 } from 'react-router-dom'
+import { signup } from '../utils/apiAccountManegment'
+import saveToken from '../utils/saveToken'
 
 export default function SignUp() {
-  const [showErr, setShowErr] = React.useState(false)
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-//     // console.log({
-//     //   email: data.get('role'),
-//     //   password: data.get('password'),
-//     // });
-//     const name = data.get('name')
-//     const role = data.get('role')
-//     const email = data.get('email')
-//     const password = data.get('password')
-//     signup(name, role, email, password)
-//     .then(res => {
-//       console.log(res)
-//       saveToken(res.data.token, res.data.user.role)
-//       setShowErr(false)
-//       navigate('/profile')
-//     })
-//     .catch(err => {
-//       setShowErr(true)
-//       console.log(err.response.data.error)
-//     })
-//   };
+  const [showErr, setShowErr] = useState(false)
+  const [errMsg, setErrMsg] = useState('Something went wrong, try again!')
+  let navigate = useNavigate()
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = data.get('name')
+    const role = data.get('role')
+    const email = data.get('email')
+    const password = data.get('password')
+    console.log(password)
+    signup(name, role, email, password)
+    .then(res => {
+      console.log(res)
+      saveToken(res.data.token, res.data.user.role)
+      setShowErr(false)
+      navigate('/profile')
+    })
+    .catch(err => {
+      setErrMsg(err.response.data.error.message ? err.response.data.error.message : "Something went wrong, try again!")
+      setShowErr(true)
+      console.log(err.response.data.error)
+    })
+  };
 
 
 
@@ -65,13 +67,13 @@ export default function SignUp() {
 
           {showErr && (
             <Typography variant='body1' color="red" >
-              Something went wrong, try again!
+              {errMsg}
             </Typography>
           )}
 
           {/* form */}
           <Box component="form" 
-        //   onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
            sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>

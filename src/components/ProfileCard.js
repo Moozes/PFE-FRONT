@@ -11,9 +11,10 @@ import theme from '../theme'
 
 export default function ProfileCard(props) {
     let doctor = props.doctor
+    let user = props.user
     let verifiedDoctor = props.verifiedDoctor
   return (
-    <Card sx={{ minWidth: "60%", m:1, display: "flex"}}>
+    <Card sx={{ minWidth: "60%", m:1, display: "flex", flexGrow:1}}>
       <CardMedia
         component="img"
         sx={{ width: 151 }}
@@ -45,7 +46,7 @@ export default function ProfileCard(props) {
                 {verifiedDoctor ? 'Unverify': 'Verify'}
             </Button>
         )}
-        {!doctor && (
+        {user && (
             <Button size="medium" color="error" variant="contained" >
                 delete
             </Button>

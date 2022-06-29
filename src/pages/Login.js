@@ -9,35 +9,34 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {
-  Link
+  Link,
+  useNavigate
 } from 'react-router-dom'
-
+import { login } from '../utils/apiAccountManegment'
+import saveToken from '../utils/saveToken'
 
 
 export default function Login() {
   const [showErr, setShowErr] = React.useState(false)
+  let navigate = useNavigate()
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-//     // console.log({
-//     //   email: data.get('email'),
-//     //   password: data.get('password'),
-//     // });
-//     const email = data.get('email')
-//     const password = data.get('password')
-//     login(email, password)
-//     .then(res => {
-//       console.log('Looged in')
-//       setShowErr(false)
-//       saveToken(res.data.token, res.data.user.role)
-//       navigate('/profile')
-//     })
-//     .catch(err => {
-//       console.log(err.response.data)
-//       setShowErr(true)
-//     })
-//   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email')
+    const password = data.get('password')
+    login(email, password)
+    .then(res => {
+      console.log('Looged in')
+      setShowErr(false)
+      saveToken(res.data.token, res.data.user.role)
+      navigate('/profile')
+    })
+    .catch(err => {
+      console.log(err.response.data)
+      setShowErr(true)
+    })
+  };
 
 
 
@@ -67,7 +66,7 @@ export default function Login() {
 
           {/* form */}
         <Box component="form" 
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             sx={{ mt: 1 }}
         >
             <TextField

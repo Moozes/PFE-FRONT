@@ -4,11 +4,11 @@ import ProfileCard from "../../components/ProfileCard"
 export default function AllUsers(props) {
     return (
         <Container maxWidth="sm">
-            <ProfileCard/>
-            <ProfileCard/>
-            <ProfileCard/>
-            <ProfileCard/>
-            <ProfileCard/>
+            <ProfileCard user/>
+            <ProfileCard user/>
+            <ProfileCard user/>
+            <ProfileCard user/>
+            <ProfileCard user/>
         </Container>
     )
 }

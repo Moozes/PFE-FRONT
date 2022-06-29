@@ -11,11 +11,9 @@ import Container from '@mui/material/Container';
 import {
   useNavigate
 } from 'react-router-dom'
-import { sendResetCode } from '../../utils/apiAccountManegment'
-import saveToken from '../../utils/saveToken'
+import { verify } from '../utils/apiAccountManegment'
 
-
-export default function SendEmail() {
+export default function VerifyEmail() {
   const [showErr, setShowErr] = React.useState(false)
   let navigate = useNavigate()
 
@@ -23,11 +21,12 @@ export default function SendEmail() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email')
-    sendResetCode(email)
+    const code = data.get('code')
+    verify(email, code)
     .then(res => {
       console.log(res)
       setShowErr(false)
-      navigate('/reset-password')
+      navigate('/profile')
     })
     .catch(err => {
       setShowErr(true)
@@ -36,10 +35,10 @@ export default function SendEmail() {
   };
 
 
-
   return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+
 
         <Box
           sx={{
@@ -53,19 +52,19 @@ export default function SendEmail() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Email
+            Email Verification
           </Typography>
 
           {showErr && (
             <Typography variant='body1' color="red" >
-              Email not found!
+              Something went wrong, try again!
             </Typography>
           )}
 
           {/* form */}
           <Box component="form" 
-            onSubmit={handleSubmit}
-             sx={{ mt: 3 }}>
+          onSubmit={handleSubmit}
+           sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
@@ -78,6 +77,17 @@ export default function SendEmail() {
                   type="email"
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="code"
+                  label="code"
+                  type="code"
+                  id="code"
+                  autoComplete="new-code"
+                />
+              </Grid>
             </Grid>
             <Button
               type="submit"
@@ -85,12 +95,10 @@ export default function SendEmail() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Send
+              Verify Email
             </Button>
-            
           </Box>
         </Box>
       </Container>
   );
 }
-

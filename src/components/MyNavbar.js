@@ -12,6 +12,8 @@ import {
   Link,
   useNavigate
 } from 'react-router-dom'
+import { logout } from '../utils/apiAccountManegment'
+import saveToken from '../utils/saveToken'
 
 
 export default function MyNavbar(props) {
@@ -33,6 +35,18 @@ export default function MyNavbar(props) {
   const handleCloseDoctors = () => {
     setAnchorElDoctors(null);
   };
+
+  const handleLogout = () => {
+    logout()
+    .then(res => {
+      console.log(res)
+      sessionStorage.clear()
+      navigate('/')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 
   let auth = true
   let role = "admin"
@@ -97,7 +111,7 @@ export default function MyNavbar(props) {
               )}
           </Box>
           {auth && (
-              <Button color="error" variant="contained" >Logout</Button>
+              <Button color="error" variant="contained" onClick={handleLogout}>Logout</Button>
           )}
           {!auth && (
           <>
