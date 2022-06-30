@@ -7,23 +7,27 @@ import { CardMedia } from '@mui/material';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import theme from '../theme'
+import { SERVER_NO_SLASH } from '../utils/apiUrl';
 
 
 export default function ProfileCard(props) {
     let doctor = props.doctor
     let user = props.user
     let verifiedDoctor = props.verifiedDoctor
+    let { userInfo } = props
+    let avatarUrl = userInfo.avatarUrl ? SERVER_NO_SLASH+userInfo.avatarUrl : '/profile.jpg'
+
   return (
     <Card sx={{ minWidth: "60%", m:1, display: "flex", flexGrow:1}}>
       <CardMedia
         component="img"
         sx={{ width: 151 }}
-        image="/profile.jpg"
+        image={avatarUrl}
       />
       <CardContent sx={{flexGrow: 1}}>
         <Typography variant="h5" component="div">
             {doctor && "Dr "}
-            Moussa
+            {userInfo.name}
             {doctor && (
                 <>
                     {bull}
@@ -34,10 +38,10 @@ export default function ProfileCard(props) {
             )}
         </Typography>
         <Typography sx={{}} color="text.secondary">
-          @yahoo.com
+          {userInfo.email}
         </Typography>
         <Typography sx={{}} color="text.secondary">
-          date
+          {userInfo.createdAt}
         </Typography>
       </CardContent>
       <CardActions>

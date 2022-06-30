@@ -4,10 +4,13 @@ LesionCard
 
 Notification
     verifiedDoctor: boolean
+    doctor object
 
 ProfileCard
+    user: boolean
     doctor: boolean
     verifiedDoctor: boolean
+    userInfo object
 
 SingleMessage
     myMessage: boolean
