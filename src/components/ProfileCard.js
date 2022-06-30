@@ -11,12 +11,12 @@ import { SERVER_NO_SLASH } from '../utils/apiUrl';
 
 
 export default function ProfileCard(props) {
-    let doctor = props.doctor
-    let user = props.user
-    let verifiedDoctor = props.verifiedDoctor
-    let { userInfo } = props
-    let avatarUrl = userInfo.avatarUrl ? SERVER_NO_SLASH+userInfo.avatarUrl : '/profile.jpg'
-    let createdAt = new Date(userInfo.createdAt)
+  let doctor = props.doctor
+  let user = props.user
+  let verifiedDoctor = props.verifiedDoctor
+  let { userInfo } = props
+  let avatarUrl = userInfo.avatarUrl ? SERVER_NO_SLASH+userInfo.avatarUrl : '/profile.jpg'
+  let createdAt = new Date(userInfo.createdAt)
   return (
     <Card sx={{ minWidth: "60%", m:1, display: "flex", flexGrow:1}}>
       <CardMedia
@@ -46,7 +46,12 @@ export default function ProfileCard(props) {
       </CardContent>
       <CardActions>
         {doctor && (
-            <Button size="medium"  variant="contained" color={verifiedDoctor ? "error" : "success"} >
+            <Button 
+              size="medium"  
+              variant="contained" 
+              color={verifiedDoctor ? "error" : "success"} 
+              onClick={props.handleVerifyDoctor}
+            >
                 {verifiedDoctor ? 'Unverify': 'Verify'}
             </Button>
         )}

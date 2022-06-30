@@ -2,7 +2,7 @@ import { Container } from "@mui/material"
 import ProfileCard from "../../components/ProfileCard"
 import { useEffect, useState } from "react"
 import { getAllDoctors } from '../../utils/apiUser'
-
+import { verifyDoctor } from "../../utils/apiAdmin"
 export default function Doctors(props) {
     // TODO: when verifying a doctor update the state because useEffect only fetches once
     const [doctors, setDoctors] = useState([])
@@ -17,17 +17,34 @@ export default function Doctors(props) {
         })
     }, [])
 
+    const handleVerifyDoctor = (id) => {
+        verifyDoctor(id)
+        .then(res => {
+            const newDoctors = doctors.map(d => {
+                if(d._id === id)
+                    d.verifiedDoctor = !d.verifiedDoctor
+                return d
+            })
+            setDoctors(newDoctors)
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
     return (
         <Container maxWidth="sm">
             {doctors.map((d, idx) => (
-                <ProfileCard key={idx} userInfo={d} doctor verifiedDoctor={d.verifiedDoctor}/>
+                <ProfileCard 
+                key={idx} 
+                userInfo={d} 
+                doctor 
+                verifiedDoctor={d.verifiedDoctor}
+                handleVerifyDoctor={() => handleVerifyDoctor(d._id)}
+            />
 
             ))}
-
-            {/* <ProfileCard doctor />
-            <ProfileCard doctor verifiedDoctor/>
-            <ProfileCard doctor verifiedDoctor/>
-            <ProfileCard doctor /> */}
         </Container>
     )
 }

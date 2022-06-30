@@ -57,9 +57,9 @@ export default function MyNavbar(props) {
   }
 
  
-
-  let auth = true
-  let role = "admin"
+  console.log("render nav bar ------------------")
+  let auth = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
+  let role = sessionStorage.getItem("role")? sessionStorage.getItem("role") : ""
   let navigate = useNavigate()
   return (
     <Box sx={{ flexGrow: 1 }}>

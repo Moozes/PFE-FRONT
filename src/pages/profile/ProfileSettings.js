@@ -11,8 +11,8 @@ import { getProfileInformation } from '../../utils/apiUser'
 
 export default function ProfileSettings(props) {
     const [userInfo, setUserInfo] = useState({})
-
     useEffect(() => {
+        console.log('useEffect')
         getProfileInformation()
         .then(res => {
             console.log(res)
@@ -46,7 +46,7 @@ export default function ProfileSettings(props) {
                     display: "flex",
                 }}
             >
-                <UploadAvatar/>
+                <UploadAvatar />
                 <DeleteAvatar/>
             </Box>
             <LogoutAll/>

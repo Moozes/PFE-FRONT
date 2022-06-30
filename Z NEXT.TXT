@@ -17,8 +17,9 @@ SingleMessage
 
 
 link with backend
+    main nav bar role/login based rendering---
     pages access control with token and role---
-     
+
     Signup---
     Login---
     forget password---
@@ -34,6 +35,8 @@ link with backend
 
     admin
         varify a doctor
+        get all users 
+        delete a user
 
     admin & doctor
         get published lesions
