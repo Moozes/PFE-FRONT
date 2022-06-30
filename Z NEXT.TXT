@@ -17,6 +17,8 @@ SingleMessage
 
 
 link with backend
+    pages access control with token and role---
+     
     Signup---
     Login---
     forget password---
@@ -28,7 +30,7 @@ link with backend
     delete profile image---
     Update profile---
     get all doctors---
-    get my profile information
+    get my profile information---
 
     admin
         varify a doctor

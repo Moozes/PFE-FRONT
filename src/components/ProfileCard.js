@@ -16,7 +16,7 @@ export default function ProfileCard(props) {
     let verifiedDoctor = props.verifiedDoctor
     let { userInfo } = props
     let avatarUrl = userInfo.avatarUrl ? SERVER_NO_SLASH+userInfo.avatarUrl : '/profile.jpg'
-
+    let createdAt = new Date(userInfo.createdAt)
   return (
     <Card sx={{ minWidth: "60%", m:1, display: "flex", flexGrow:1}}>
       <CardMedia
@@ -41,7 +41,7 @@ export default function ProfileCard(props) {
           {userInfo.email}
         </Typography>
         <Typography sx={{}} color="text.secondary">
-          {userInfo.createdAt}
+          {`${createdAt.getDate()}-${createdAt.getMonth()}-${createdAt.getFullYear()}`}
         </Typography>
       </CardContent>
       <CardActions>

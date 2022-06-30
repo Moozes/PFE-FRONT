@@ -38,3 +38,13 @@ export const getAllDoctors = () => {
         },
     })
 }
+
+
+export const getProfileInformation = () => {
+    const token = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
+    return axiosInstance.get('users/me', {
+        headers: { 
+            'Authorization': `Bearer ${token}` 
+        },
+    })
+}

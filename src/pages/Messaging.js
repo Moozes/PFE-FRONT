@@ -3,11 +3,20 @@ import { Paper, Box, Container, Typography } from "@mui/material"
 import SingleMessage from "../components/SingleMessage"
 import MessageForm from "../components/MessageForm"
 import {
-    useParams
+    useParams,
+    useNavigate
 } from 'react-router-dom'
+import {
+    useEffect
+} from 'react'
+import accessControl from "../utils/accessControl"
 
 export default function Messaging(props) {
+    let navigate = useNavigate()
     let params = useParams()
+    useEffect(() => {
+        accessControl("messaging", navigate)
+    }, [])
     return(
         <Container maxWidth="sm" sx={{pt: 3, display: "flex", flexDirection: "column", alignItems: "center"}}>
             <Typography variant="h6" align="center" gutterBottom>

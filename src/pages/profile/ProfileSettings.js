@@ -6,8 +6,24 @@ import DeleteAccount from "../../components/DeleteAccount"
 import DeleteAvatar from "../../components/DeleteAvatar"
 import UpdateProfile from '../../components/UpdateProfile'
 import VerifyEmailButton from "../../components/VerifyEmailButton"
+import { useState, useEffect } from 'react'
+import { getProfileInformation } from '../../utils/apiUser'
 
 export default function ProfileSettings(props) {
+    const [userInfo, setUserInfo] = useState({})
+
+    useEffect(() => {
+        getProfileInformation()
+        .then(res => {
+            console.log(res)
+            setUserInfo(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
+
+
     let role = "user"
     let emailVerified = false
     return (
@@ -19,7 +35,7 @@ export default function ProfileSettings(props) {
                     justifyContent: "space-between"
                 }}
             >
-                <ProfileCard />
+                <ProfileCard userInfo={userInfo}/>
                 {!emailVerified && (
                     <VerifyEmailButton/>
                 )}
