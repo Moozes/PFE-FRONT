@@ -29,3 +29,12 @@ export const updateProfile = (data) => {
         },
     })
 }
+
+export const getAllDoctors = () => {
+    const token = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
+    return axiosInstance.get('users/doctors', {
+        headers: { 
+            'Authorization': `Bearer ${token}` 
+        },
+    })
+}

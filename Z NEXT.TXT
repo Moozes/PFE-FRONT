@@ -24,7 +24,7 @@ link with backend
     upload profile image---
     delete profile image---
     Update profile---
-    get all doctors
+    get all doctors---
     get my profile information
 
     admin

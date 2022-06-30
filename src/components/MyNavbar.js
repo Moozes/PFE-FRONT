@@ -6,14 +6,14 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Notification from './Notification';
 import {
   Link,
   useNavigate
 } from 'react-router-dom'
 import { logout } from '../utils/apiAccountManegment'
-import saveToken from '../utils/saveToken'
+import { getAllDoctors } from '../utils/apiUser'
 
 
 export default function MyNavbar(props) {
@@ -26,10 +26,18 @@ export default function MyNavbar(props) {
     setAnchorElMessages(null);
   };
 
-
+  const [doctors, setDoctors] = useState([])
   const [anchorElDoctors, setAnchorElDoctors] = React.useState(null);
   const openDoctors = Boolean(anchorElDoctors);
   const handleClickDoctors = (event) => {
+    getAllDoctors()
+    .then(res => {
+      console.log(res)
+      setDoctors(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
     setAnchorElDoctors(event.currentTarget);
   };
   const handleCloseDoctors = () => {
@@ -47,6 +55,8 @@ export default function MyNavbar(props) {
       console.log(err)
     })
   }
+
+ 
 
   let auth = true
   let role = "admin"
@@ -77,14 +87,18 @@ export default function MyNavbar(props) {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
-                    <MenuItem onClick={handleCloseDoctors}>
-                      <Notification 
-                        verifiedDoctor 
-                        onClick={() => {
-                          navigate('messages/123')
-                        }}
-                      />
-                    </MenuItem>
+                    {doctors.map((d, idx) => (
+                      <MenuItem onClick={handleCloseDoctors} key={idx} >
+                        <Notification 
+                            verifiedDoctor={d.verifiedDoctor}
+                            doctor={d} 
+                            onClick={() => {
+                              handleCloseDoctors()
+                              navigate(`messages/${d._id}`)
+                            }}
+                        />
+                      </MenuItem>
+                    ))}
                   </Menu>
 
 
@@ -98,14 +112,15 @@ export default function MyNavbar(props) {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
-                    <MenuItem onClick={handleCloseMessages}>
-                      <Notification 
-                          verifiedDoctor 
-                          onClick={() => {
-                            navigate('messages/123')
-                          }}
-                      />
-                    </MenuItem>
+                      {/* <MenuItem onClick={handleCloseMessages}>
+                        <Notification 
+                            verifiedDoctor={d.verifiedDoctor}
+                            doctor={d} 
+                            onClick={() => {
+                              navigate('messages/123')
+                            }}
+                        />
+                      </MenuItem> */}
                   </Menu>
               </>
               )}
@@ -124,3 +139,19 @@ export default function MyNavbar(props) {
     </Box>
   )
 }
+
+
+const DOCTORS = [
+  {
+    id: "123",
+    name: "omar",
+    avatarUrl: '/profile.jpg',
+    verifiedDoctor : false
+  },
+  {
+    id: "123456",
+    name: "sara",
+    avatarUrl: '/profile.jpg',
+    verifiedDoctor : true
+  },
+]
