@@ -87,9 +87,10 @@ export default function MyNavbar(props) {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
-                    {doctors.map((d, idx) => (
-                      <MenuItem onClick={handleCloseDoctors} key={idx} >
-                        <Notification 
+                    <MenuItem onClick={handleCloseDoctors} >
+                      {doctors.length === 0 && "There are no doctors."}
+                      {doctors.map((d, idx) => (
+                        <Notification key={idx}
                             verifiedDoctor={d.verifiedDoctor}
                             doctor={d} 
                             onClick={() => {
@@ -97,8 +98,8 @@ export default function MyNavbar(props) {
                               navigate(`messages/${d._id}`)
                             }}
                         />
-                      </MenuItem>
-                    ))}
+                      ))}
+                    </MenuItem>
                   </Menu>
 
 

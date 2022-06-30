@@ -9,3 +9,22 @@ export const verifyDoctor = (id) => {
         }
     })
 }
+
+
+export const getAllUsers = () => {
+    const token = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
+    return axiosInstance.get('users', {
+        headers: { 
+            'Authorization': `Bearer ${token}` 
+        }
+    })
+}
+
+export const deleteUser = (id) => {
+    const token = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
+    return axiosInstance.delete(`users/${id}`, {
+        headers: { 
+            'Authorization': `Bearer ${token}` 
+        }
+    })
+}

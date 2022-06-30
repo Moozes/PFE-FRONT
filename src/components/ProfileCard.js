@@ -26,7 +26,7 @@ export default function ProfileCard(props) {
       />
       <CardContent sx={{flexGrow: 1}}>
         <Typography variant="h5" component="div">
-            {doctor && "Dr "}
+            {userInfo.role === "doctor" && "Dr "}
             {userInfo.name}
             {doctor && (
                 <>
@@ -56,7 +56,12 @@ export default function ProfileCard(props) {
             </Button>
         )}
         {user && (
-            <Button size="medium" color="error" variant="contained" >
+            <Button 
+              size="medium" 
+              color="error" 
+              variant="contained" 
+              onClick={props.handleDeleteUser}
+            >
                 delete
             </Button>
         )}

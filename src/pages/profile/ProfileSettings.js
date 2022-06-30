@@ -24,7 +24,7 @@ export default function ProfileSettings(props) {
     }, [])
 
 
-    let role = "user"
+    const role = sessionStorage.getItem("role")? sessionStorage.getItem("role") : ""
     let emailVerified = false
     return (
         <Container maxWidth="md" sx={{display: "flex", flexDirection: "column", gap:3}} >

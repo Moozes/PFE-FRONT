@@ -1,4 +1,4 @@
-import { Container } from "@mui/material"
+import { Container, Typography } from "@mui/material"
 import ProfileCard from "../../components/ProfileCard"
 import { useEffect, useState } from "react"
 import { getAllDoctors } from '../../utils/apiUser'
@@ -35,6 +35,16 @@ export default function Doctors(props) {
 
     return (
         <Container maxWidth="sm">
+            {doctors.length === 0 && (
+                <Typography 
+                    variant="h6" 
+                    color="info" 
+                    align="center"
+                    mt={4}
+                >
+                    There are no doctors registered yet!
+                </Typography>
+            )}
             {doctors.map((d, idx) => (
                 <ProfileCard 
                 key={idx} 
@@ -43,7 +53,6 @@ export default function Doctors(props) {
                 verifiedDoctor={d.verifiedDoctor}
                 handleVerifyDoctor={() => handleVerifyDoctor(d._id)}
             />
-
             ))}
         </Container>
     )

@@ -34,9 +34,9 @@ link with backend
     get my profile information---
 
     admin
-        varify a doctor
-        get all users 
-        delete a user
+        varify a doctor---
+        get all users---
+        delete a user---
 
     admin & doctor
         get published lesions
