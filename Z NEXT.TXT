@@ -47,8 +47,10 @@ link with backend
     user
         upload a lesion---
         get my uploaded lesions---
-        delete one of my lesions
-        Publish/Unpublish one of my lesions
+        delete one of my lesions---
+        Publish/Unpublish one of my lesions---
 
         send message to doctor X
         get all my messages from doctor X
+
+        CASCADE delete in database when delete my account or not we can use new data in training set

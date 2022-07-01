@@ -18,3 +18,23 @@ export const getLesions = () => {
         },
     })
 }
+
+export const deleteLesion = (id) => {
+    const token = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
+    return axiosInstance.delete(`lesions/${id}`, {
+        headers: { 
+            'Authorization': `Bearer ${token}` 
+        },
+    })
+}
+
+export const updatePublishLesion = (id, published) => {
+    const token = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
+    return axiosInstance.patch(`lesions/${id}`, {
+        published
+    }, {
+        headers: { 
+            'Authorization': `Bearer ${token}` 
+        },
+    })
+}

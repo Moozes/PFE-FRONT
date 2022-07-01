@@ -45,10 +45,19 @@ export default function LesionCard(props) {
         action={
             profile && (
             <>
-                <Button variant="contained" color={published ? "warning" : "success"} sx={{mr:1}} >
+                <Button 
+                  variant="contained" 
+                  color={published ? "warning" : "success"} 
+                  sx={{mr:1}} 
+                  onClick={props.handleUpdatePublishLesion}
+                >
                     {published ? "Unpublish" : "Publish"}
                 </Button>
-                <Button variant="contained" color="error">Delete</Button>
+                <Button 
+                  variant="contained" 
+                  color="error"
+                  onClick={props.handleDeleteLesion}
+                >Delete</Button>
             </>
             )
         }
