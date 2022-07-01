@@ -1,9 +1,33 @@
-import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import { TextField, Button } from '@mui/material';
+import { useState } from 'react';
+import { uploadLesion } from '../utils/apiLesion';
 
 const UploadLesion = (props) => {
+  const [showErr, setShowErr] = useState(false)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    // const description = data.get('description')
+    // const image = data.get('image')
+    // console.log(description)
+    // console.log(image)
+    uploadLesion(data)
+    .then(res => {
+      console.log(res)
+      const newLesions = [res.data, ...props.lesions]
+      props.setLesions(newLesions)
+      setShowErr(false)
+    })
+    .catch(err => {
+      console.log(err)
+      setShowErr(true)
+    })
+
+  };
+
+
     return (
         <Paper 
               elevation={3}
@@ -17,7 +41,14 @@ const UploadLesion = (props) => {
               >
                 Upload A lesion Image
               </Typography>
-              <form  onSubmit={() => console.log("submitted")} >
+
+              {showErr && (
+                <Typography variant='body1' color="red" >
+                  Email or Password wrong!
+                </Typography>
+              )}
+
+              <form  onSubmit={handleSubmit} >
                 <TextField 
                   id="outlined-basic" 
                   label="Description" 
@@ -26,6 +57,7 @@ const UploadLesion = (props) => {
                   required
                   placeholder='Enter Description' 
                   fullWidth
+                  name="description"
                   sx={{
                     mt:2,
                     mb:2
@@ -35,6 +67,7 @@ const UploadLesion = (props) => {
                   id="outlined-number"
                   label="Lesion Image"
                   type="file"
+                  name="image"
                   required
                   InputLabelProps={{
                     shrink: true,

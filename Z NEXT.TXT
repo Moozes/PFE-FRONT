@@ -45,8 +45,8 @@ link with backend
         comment on a lesion
 
     user
-        upload a lesion
-        get my uploaded lesions
+        upload a lesion---
+        get my uploaded lesions---
         delete one of my lesions
         Publish/Unpublish one of my lesions
 

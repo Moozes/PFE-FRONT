@@ -16,6 +16,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Paper, TextField, Button, Box } from '@mui/material';
 import Comment from './Comment';
+import { SERVER_NO_SLASH } from '../utils/apiUrl';
 
 
 
@@ -23,6 +24,11 @@ import Comment from './Comment';
 export default function LesionCard(props) {
     let profile = props.profile
     let published = props.published
+    let {lesion} = props
+    let avatarUrl = lesion.avatarUrl ? SERVER_NO_SLASH+lesion.avatarUrl : '/profile.jpg'
+    let imageUrl = SERVER_NO_SLASH+lesion.imageUrl
+    let createdAt = new Date(lesion.createdAt)
+
 
     // expand comments state
     const [expanded, setExpanded] = React.useState(false);
@@ -46,21 +52,21 @@ export default function LesionCard(props) {
             </>
             )
         }
-        title="Moussa"
-        subheader="date"
+        title={lesion.owner.name}
+        subheader={`${createdAt.getDate()}-${createdAt.getMonth()}-${createdAt.getFullYear()}`}
       />
       <CardMedia
         component="img"
         height="194"
-        image="https://i1.wp.com/blog.pensoft.net/wp-content/uploads/2021/09/Figure-1-scaled.jpg?ssl=1"
+        image={imageUrl}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          description, this is an image of my arm
+          {lesion.description}
         </Typography>
         <Paper elevation={6} sx={{p:2, mt:1}}>
             <Typography variant="h6" >Prediction</Typography>
-            Result: melanoma {bull} Probabiity: 99%
+            Result: melanoma {bull} Probabiity: 99% moussa fix this!!!!
         </Paper>
       </CardContent>
       <CardActions disableSpacing>
@@ -82,7 +88,7 @@ export default function LesionCard(props) {
             sx={{
                 p:2
             }}
-        >Comment</Button>
+        >Comment fix this !!!!!</Button>
         </form>
         <ExpandMore
           expand={expanded}
