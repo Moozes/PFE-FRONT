@@ -9,11 +9,7 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Paper, TextField, Button, Box } from '@mui/material';
 import Comment from './Comment';
 import { SERVER_NO_SLASH } from '../utils/apiUrl';
@@ -25,7 +21,8 @@ export default function LesionCard(props) {
     let profile = props.profile
     let published = props.published
     let {lesion} = props
-    let avatarUrl = lesion.avatarUrl ? SERVER_NO_SLASH+lesion.avatarUrl : '/profile.jpg'
+    let avatarUrl = lesion.owner.avatarUrl ? SERVER_NO_SLASH+lesion.owner.avatarUrl : '/profile.jpg'
+    console.log(avatarUrl)
     let imageUrl = SERVER_NO_SLASH+lesion.imageUrl
     let createdAt = new Date(lesion.createdAt)
 
@@ -36,11 +33,20 @@ export default function LesionCard(props) {
         setExpanded(!expanded);
     };
 
+
+    const handleSubmit = (event) => {
+      event.preventDefault()
+      const data = new FormData(event.currentTarget)
+      
+      props.handleComment(lesion._id, data.get('text'))
+      
+    }
+
   return (
     <Card sx={{  mt:2,mb:2, flexBasis: "50%" }}>
       <CardHeader
         avatar={
-            <Avatar src="/profile.jpg" sx={{mr:1}}   />
+            <Avatar src={avatarUrl} sx={{mr:1}}   />
         }
         action={
             profile && (
@@ -79,11 +85,13 @@ export default function LesionCard(props) {
         </Paper>
       </CardContent>
       <CardActions disableSpacing>
-        <form>
+
+        <form onSubmit={handleSubmit} >
         <TextField 
             label="comment" 
             variant="outlined" 
             type="text" 
+            name="text"
             required
             placeholder='Enter a comment' 
             sx={{
@@ -99,6 +107,7 @@ export default function LesionCard(props) {
             }}
         >Comment fix this !!!!!</Button>
         </form>
+
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -111,9 +120,17 @@ export default function LesionCard(props) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
             <Typography paragraph>Comments:</Typography>
-            <Comment/>
-            <Comment/>
-            <Comment/>
+            {lesion.comments.length === 0 && (
+              <Typography>
+                No one commeted on this post yet.
+              </Typography>
+            )}
+            {lesion.comments.map((c, idx) => (
+              <Comment
+                key={idx}
+                comment={c}
+              />
+            ))}
         </CardContent>
       </Collapse>
     </Card>

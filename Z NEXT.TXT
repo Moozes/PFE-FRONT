@@ -39,10 +39,10 @@ link with backend
         delete a user---
 
     admin & doctor
-        get published lesions
+        get published lesions---
 
     admin & doctor & owner
-        comment on a lesion
+        comment on a lesion---
 
     user
         upload a lesion---
@@ -50,7 +50,26 @@ link with backend
         delete one of my lesions---
         Publish/Unpublish one of my lesions---
 
-        send message to doctor X
-        get all my messages from doctor X
+        send message to doctor X---
+        get all my messages from doctor X---
 
-        CASCADE delete in database when delete my account or not we can use new data in training set
+
+        BUG
+
+
+            when saving a lesion's owner in upload a lesion
+            if he didnt upload avatar yet, lesion card wont have avatar
+            even if he uploaded an avatar after that
+
+            profile settings, update profile info when uploading avatar and when updating info
+
+        THIS IS A GOOD IDEA
+            make a backend route were admin get all uploaded lesions without personel information
+            CASCADE delete in database when delete my account or not we can use new data in training set
+
+
+
+
+
+
+

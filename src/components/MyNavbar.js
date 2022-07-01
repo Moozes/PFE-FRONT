@@ -14,13 +14,23 @@ import {
 } from 'react-router-dom'
 import { logout } from '../utils/apiAccountManegment'
 import { getAllDoctors } from '../utils/apiUser'
+import { getUsersThatMessagedMe } from '../utils/apiMessage';
 
 
 export default function MyNavbar(props) {
+  const [users, setUsers] = React.useState([])
   const [anchorElMessages, setAnchorElMessages] = React.useState(null);
   const openMessages = Boolean(anchorElMessages);
   const handleClickMessages = (event) => {
     setAnchorElMessages(event.currentTarget);
+    getUsersThatMessagedMe()
+    .then(res => {
+      console.log(res)
+      setUsers(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   };
   const handleCloseMessages = () => {
     setAnchorElMessages(null);
@@ -57,7 +67,6 @@ export default function MyNavbar(props) {
   }
 
  
-  console.log("render nav bar ------------------")
   let auth = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
   let role = sessionStorage.getItem("role")? sessionStorage.getItem("role") : ""
   let navigate = useNavigate()
@@ -87,19 +96,19 @@ export default function MyNavbar(props) {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
-                    <MenuItem onClick={handleCloseDoctors} >
                       {doctors.length === 0 && "There are no doctors."}
                       {doctors.map((d, idx) => (
-                        <Notification key={idx}
+                      <MenuItem key={idx} onClick={handleCloseDoctors} >
+                        <Notification 
                             verifiedDoctor={d.verifiedDoctor}
-                            doctor={d} 
+                            user={d} 
                             onClick={() => {
                               handleCloseDoctors()
                               navigate(`messages/${d._id}`)
                             }}
                         />
+                      </MenuItem>
                       ))}
-                    </MenuItem>
                   </Menu>
 
 
@@ -113,6 +122,19 @@ export default function MyNavbar(props) {
                       'aria-labelledby': 'basic-button',
                     }}
                   >
+                      {users.length === 0 && "No one messaged you"}
+                      {users.map((u, idx) => (
+                      <MenuItem key={idx} onClick={handleCloseMessages} >
+                        <Notification 
+                            verifiedDoctor={u.verifiedDoctor}
+                            user={u} 
+                            onClick={() => {
+                              handleCloseDoctors()
+                              navigate(`messages/${u._id}`)
+                            }}
+                        />
+                      </MenuItem>
+                      ))}
                       {/* <MenuItem onClick={handleCloseMessages}>
                         <Notification 
                             verifiedDoctor={d.verifiedDoctor}

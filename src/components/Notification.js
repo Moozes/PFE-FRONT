@@ -8,17 +8,22 @@ import { SERVER_NO_SLASH } from '../utils/apiUrl';
 
 export default function Notification(props) {
     let verifiedDoctor= props.verifiedDoctor
-    let {doctor} = props
-    let avatarUrl = doctor.avatarUrl ? SERVER_NO_SLASH+doctor.avatarUrl : '/profile.jpg'
+    let {user} = props
+    let avatarUrl = user.avatarUrl ? SERVER_NO_SLASH+user.avatarUrl : '/profile.jpg'
     return (
         <Paper sx={{display: "flex", alignItems: "center", p:1, cursor: "pointer"}} elevation={3} onClick={props.onClick}>
             <Avatar src={avatarUrl} sx={{mr:1, width: 24, height: 24}}   />
             <Typography variant="h6" component="div">
-                Dr {doctor.name}{bull}
+                {user.role === "doctor" && "Dr"} {user.name}
             </Typography>
-            <span style={{ color: verifiedDoctor ? theme.palette.success.light: theme.palette.error.light }}>
-                {verifiedDoctor ? 'verified' : 'not verified'}
-            </span>
+              {user.role === "doctor" && (
+                <>
+                {bull}
+                <span style={{ color: verifiedDoctor ? theme.palette.success.light: theme.palette.error.light }}>
+                    {verifiedDoctor ? 'verified' : 'not verified'}
+                </span>
+                </>
+              )}
         </Paper>
     )
 }

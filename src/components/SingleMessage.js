@@ -8,7 +8,7 @@ export default function SingleMessage(props) {
     let myMessage = props.myMessage
     
     const receiverMessageStyle = {
-        backgroundColor: theme.palette.grey[700],
+        backgroundColor: theme.palette.grey[900],
         color: theme.palette.text.primary
     }
     const senderMessageStyle = {
@@ -19,7 +19,8 @@ export default function SingleMessage(props) {
     <>
         <Box
             sx={{
-                display: "flex"
+                display: "flex",
+                justifyContent: "space-between"
             }}
         >
             {myMessage && (
@@ -29,7 +30,7 @@ export default function SingleMessage(props) {
                 p: 1,
                 ...(myMessage ? senderMessageStyle : receiverMessageStyle)
             }}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled i
+                {props.message.text}
             </Paper>
             {!myMessage && (
                 <div style={{minWidth: "10%", justifySelf: "stretch"}} ></div>
