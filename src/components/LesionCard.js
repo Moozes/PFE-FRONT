@@ -81,7 +81,7 @@ export default function LesionCard(props) {
         </Typography>
         <Paper elevation={6} sx={{p:2, mt:1}}>
             <Typography variant="h6" >Prediction</Typography>
-            {/* Result: Result: {lesion.prediction.result} {bull} Probabiity: {lesion.prediction.probability} */}
+            Result: Result: {lesion.prediction.result} {bull} Probabiity: {lesion.prediction.probability}
         </Paper>
       </CardContent>
       <CardActions disableSpacing>

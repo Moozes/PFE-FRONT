@@ -80,7 +80,7 @@ export default function DatasetCard(props) {
         </Typography>
         <Paper elevation={6} sx={{p:2, mt:1}}>
             <Typography variant="h6" >Prediction</Typography>
-            {/* Result: {lesion.prediction.result} {bull} Probabiity: {lesion.prediction.probability} */}
+            Result: {lesion.prediction.result} {bull} Probabiity: {lesion.prediction.probability}
         </Paper>
       </CardContent>
     </Card>
