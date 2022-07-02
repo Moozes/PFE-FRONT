@@ -237,11 +237,13 @@ export default function Home(props) {
             </Typography>
         </Paper>
         
-            {/* <Paper 
+            <Paper 
             elevation={3}
             sx={{
                 p: 2,
-                mb: 4
+                mb: 4,
+                borderLeft: "10px solid",
+                borderColor: "secondary.main"
             }}
         >
             <Typography
@@ -251,7 +253,7 @@ export default function Home(props) {
                 sx={{
                     fontSize: "20px",
                     mb: 2,
-                    color: 'primary.main'
+                    color: 'secondary.main'
                 }}
             >Secondary Goal</Typography>
             <Typography
@@ -266,8 +268,8 @@ export default function Home(props) {
             >
                 As a secondary goal, this project allows the collection of new skin lesions dataset, by saving users uploaded images after stripping it off their private information
 
-            </Typography> */}
-        {/* </Paper> */}
+            </Typography>
+        </Paper>
         </Container>
         
     </>
