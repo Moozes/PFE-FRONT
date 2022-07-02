@@ -16,6 +16,7 @@ import {
 import ProfileLesions from './pages/profile/ProfileLesions';
 import ProfileSettings from './pages/profile/ProfileSettings';
 import AllUsers from './pages/dashboard/AllUsers';
+import Dataset from './pages/dashboard/Dataset';
 import Doctors from './pages/dashboard/Doctors';
 import VerifyEmail from './pages/VerifyEmail';
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="dashboard" element={<Dashboard/>}>
           <Route index element={<Doctors/>}/>
           <Route path="users" element={<AllUsers/>}/>
+          <Route path="dataset" element={<Dataset/>}/>
         </Route>
         <Route path="forum" element={<Forum/>}/>
         <Route path="messages/:id" element={<Messaging/>}/>

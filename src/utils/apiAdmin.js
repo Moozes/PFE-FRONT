@@ -20,6 +20,16 @@ export const getAllUsers = () => {
     })
 }
 
+// get all lesions without the personel information
+export const getAllLesions = () => {
+    const token = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
+    return axiosInstance.get('allLesions', {
+        headers: { 
+            'Authorization': `Bearer ${token}` 
+        }
+    })
+}
+
 export const deleteUser = (id) => {
     const token = sessionStorage.getItem("token")? sessionStorage.getItem("token") : ""
     return axiosInstance.delete(`users/${id}`, {

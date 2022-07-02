@@ -14,6 +14,7 @@ export default function DashboardNavbar(props) {
     <Toolbar sx={{display: "flex", gap:2}} >
         <Button color="primary" variant="contained" sx={{flexGrow: 1}} component={Link} to="">Doctors</Button>
         <Button color="primary" variant="contained" sx={{flexGrow: 1}} component={Link} to="users">all users</Button>
+        <Button color="primary" variant="contained" sx={{flexGrow: 1}} component={Link} to="dataset">Dataset</Button>
     </Toolbar>
     </AppBar>
   )

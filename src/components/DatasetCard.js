@@ -17,12 +17,11 @@ import { SERVER_NO_SLASH } from '../utils/apiUrl';
 
 
 
-export default function LesionCard(props) {
+export default function DatasetCard(props) {
     let profile = props.profile
     let published = props.published
     let {lesion} = props
-    let avatarUrl = lesion.owner.avatarUrl ? SERVER_NO_SLASH+lesion.owner.avatarUrl : '/profile.jpg'
-    console.log(avatarUrl)
+    let avatarUrl = '/profile.jpg'
     let imageUrl = SERVER_NO_SLASH+lesion.imageUrl
     let createdAt = new Date(lesion.createdAt)
 
@@ -67,7 +66,7 @@ export default function LesionCard(props) {
             </>
             )
         }
-        title={lesion.owner.name}
+        title="UNKNOW"
         subheader={`${createdAt.getDate()}-${createdAt.getMonth()}-${createdAt.getFullYear()}`}
       />
       <CardMedia
@@ -81,58 +80,9 @@ export default function LesionCard(props) {
         </Typography>
         <Paper elevation={6} sx={{p:2, mt:1}}>
             <Typography variant="h6" >Prediction</Typography>
-            {/* Result: Result: {lesion.prediction.result} {bull} Probabiity: {lesion.prediction.probability} */}
+            {/* Result: {lesion.prediction.result} {bull} Probabiity: {lesion.prediction.probability} */}
         </Paper>
       </CardContent>
-      <CardActions disableSpacing>
-
-        <form onSubmit={handleSubmit} >
-        <TextField 
-            label="comment" 
-            variant="outlined" 
-            type="text" 
-            name="text"
-            required
-            placeholder='Enter a comment' 
-            sx={{
-                mr: 1
-            }}
-        />
-        <Button 
-            align="center"
-            variant="contained"
-            type="submit"
-            sx={{
-                p:2
-            }}
-        >Comment</Button>
-        </form>
-
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-            <Typography paragraph>Comments:</Typography>
-            {lesion.comments.length === 0 && (
-              <Typography>
-                No one commeted on this post yet.
-              </Typography>
-            )}
-            {lesion.comments.map((c, idx) => (
-              <Comment
-                key={idx}
-                comment={c}
-              />
-            ))}
-        </CardContent>
-      </Collapse>
     </Card>
   );
 }
